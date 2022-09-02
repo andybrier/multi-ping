@@ -28,9 +28,7 @@ if __name__ == "__main__":
    
     # A list of addresses and names, which should be pinged.
     addrs = ["110.242.68.66", "8.8.8.8", "114.114.114.114", "127.0.0.1"]
-
-    print("sending one round of pings and checking twice for responses")
-    fileName='/tmp/logs.txt'
+    fileName='/tmp/logs.txt' 
     with open(fileName,'w')as file:
             file.write('-------')
     
