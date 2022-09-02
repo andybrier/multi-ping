@@ -21,6 +21,8 @@ limitations under the License.
 
 from multiping import MultiPing
 from multiping import multi_ping
+import datetime
+import time
 
 if __name__ == "__main__":
    
