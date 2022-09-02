@@ -30,18 +30,22 @@ if __name__ == "__main__":
     addrs = ["110.242.68.66", "8.8.8.8", "114.114.114.114", "127.0.0.1"]
 
     print("sending one round of pings and checking twice for responses")
+    fileName='/tmp/logs.txt'
+    with open(fileName,'w')as file:
+            file.write('-------')
     
-    for i in range(100000):
-        mp = MultiPing(addrs)
-        mp.send()
-        responses, no_response = mp.receive(0.01)
+            for i in range(100000):
+                mp = MultiPing(addrs)
+                mp.send()
+                responses, no_response = mp.receive(0.01)
 
-        current_time = datetime.datetime.now()
+                current_time = datetime.datetime.now()
 
-        #print("  %s  received responses: " % (current_time))
-        if not no_response:
-            print("%s all done, received responses from everyone" %current_time)
-        else:
-            print(" %s   %d. retry, resending to: %s" % (current_time, i + 1, no_response))
-        time.sleep(1)
-    print("done, exit")
+              
+                if not no_response:
+                    file.write("%s all done, received responses from everyone \n" %current_time)
+                else:
+                    file.write(" %s   %d. retry, resending to: %s \n" % (current_time, i + 1, no_response))
+                time.sleep(1)
+                
+            file("done, exit")
