@@ -32,7 +32,7 @@ if __name__ == "__main__":
     addrs = [ "114.114.114.114", "127.0.0.1"]
     fileName='/tmp/logs.txt'
     # for app to proxy
-    cmd1 = ['tcpdump', '-i', 'eth0', '-s', '0', '-w', '/tmp/tair.pcap', '-W', '256', '-C', '1', 'dst', 'port', '9736']
+    #cmd1 = ['tcpdump', '-i', 'eth0', '-s', '0', '-w', '/tmp/tair.pcap', '-W', '256', '-C', '1', 'dst', 'port', '9736']
     # for proxy to app
     #cmd1 = ['tcpdump', '-i', 'eth0', '-s', '0', '-w', '/tmp/tair.pcap', '-W', '256', '-C', '1', 'port', '9736']
     proc = subprocess.Popen(cmd1, stdout=subprocess.PIPE)
@@ -42,7 +42,7 @@ if __name__ == "__main__":
             for i in range(100000):
                 mp = MultiPing(addrs)
                 mp.send()
-                responses, no_response = mp.receive(0.02)
+                responses, no_response = mp.receive(0.005)
 
                 current_time = datetime.datetime.now()
 
@@ -51,7 +51,7 @@ if __name__ == "__main__":
                     file.write("%s all done, received responses from everyone \n" %current_time)
                 else:
                     file.write(" %s   %d. retry, resending to: %s \n" % (current_time, i + 1, no_response))
-                    proc.kill()
+                    #proc.kill()
                 time.sleep(1)
                 
             file("done, exit")
