@@ -35,7 +35,7 @@ if __name__ == "__main__":
     #cmd1 = ['tcpdump', '-i', 'eth0', '-s', '0', '-w', '/tmp/tair.pcap', '-W', '256', '-C', '1', 'dst', 'port', '9736']
     # for proxy to app
     #cmd1 = ['tcpdump', '-i', 'eth0', '-s', '0', '-w', '/tmp/tair.pcap', '-W', '256', '-C', '1', 'port', '9736']
-    proc = subprocess.Popen(cmd1, stdout=subprocess.PIPE)
+    #proc = subprocess.Popen(cmd1, stdout=subprocess.PIPE)
     with open(fileName,'w')as file:
             file.write('-------')
 
